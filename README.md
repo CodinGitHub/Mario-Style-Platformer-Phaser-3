@@ -60,7 +60,7 @@ let config = {
 ~~~
 let game = new Phaser.Game(config);
 ~~~
-2. ## Arcade Basics
+## 2. ## Arcade Basics
 3. ## Static and dinamic bodies
 4. ## Player wlaking
 ## Player jumping
