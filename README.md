@@ -1,7 +1,52 @@
-# Mario-Style-Platformer-Phaser-3
+# Mario Style Platformer Game made in Phaser3
 
-Starting
-Arcade Basics
+##
+
+[Starting][blog]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[blog]Arcade Basics
 Static and dinamic bodies
 Player wlaking
 player jumping
