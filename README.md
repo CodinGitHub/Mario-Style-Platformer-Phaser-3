@@ -9,7 +9,7 @@
 7. [Fire and position](#fire-and-position)
 8. [Detecting overlap](#detecting-overlap)
 9. [Generatin barrils](#generatin-barrils)
-10. [Pool of ojects](#10.-Pool)
+10. [Pool of objects](#Pool-of-objects)
 
 ## 1. Starting
 
@@ -68,4 +68,4 @@ let game = new Phaser.Game(config);
 ## 7. Fire and position
 ## 8. Detecting overlap
 ## 9. Generatin barrils
-## 10. Pool
+## Pool of objects
