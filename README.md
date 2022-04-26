@@ -61,6 +61,29 @@ let config = {
 ~~~
 let game = new Phaser.Game(config);
 ~~~
+### Personal notes:
+  - We can create an sprite and add the physics system in two ways:
+  1) Create and add
+  ~~~
+   //Sprite creation
+  let barrel = this.add.sprite(180, 200, 'barrel');
+  //add sprite to the physics system
+  this.physics.add.existing(barrel);
+  ~~~
+  2) Create and add in the same line
+  ~~~
+  let ground = this.physics.add.sprite(180,200,'ground');
+  ~~~
+  - We can also add physics to our game adding this lines of code to the game configuration 
+  ~~~
+  physics:{
+    default: 'arcade',
+    arcade: {
+      gravity: {y:1000},
+      debug: true
+    }
+  }
+  ~~~
 ## Arcade Basics
 ## Static and dinamic bodies
 ## Player wlaking

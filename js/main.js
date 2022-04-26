@@ -31,7 +31,17 @@ gameScene.preload = function() {
 };
 
 // executed once, after assets were loaded
-gameScene.create = function() {};
+gameScene.create = function() {
+  //1) adding existing sprites to the physics system
+  //Sprite creation
+  let barrel = this.add.sprite(180, 200, 'barrel');
+  //add sprite to the physics system
+  this.physics.add.existing(barrel);
+
+  //2)creating and adding sprites to th physics system
+  let ground = this.physics.add.sprite(180,200,'ground');
+  console.log(ground)
+};
 
 // our game's configuration
 let config = {
@@ -40,7 +50,14 @@ let config = {
   height: 640,
   scene: gameScene,
   title: 'Monster Kong',
-  pixelArt: false
+  pixelArt: false,
+  physics:{
+    default: 'arcade',
+    arcade: {
+      gravity: {y:1000},
+      debug: true
+    }
+  }
 };
 
 // create the game, and pass it the configuration
