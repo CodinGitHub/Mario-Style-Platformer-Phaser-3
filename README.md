@@ -1,6 +1,6 @@
 # Mario Style Platformer Game made in Phaser3
 
-1. [Starting](#Starting)
+1. [Starting](#1.-Starting)
 2. [Arcade Basics](#Arcade-Basics)
 3. [Static and dinamic bodies](#Static-and-dinamic-bodies)
 4. [Player wlaking](#Player-wlaking)
@@ -9,7 +9,7 @@
 7. [Fire and position](#fire-and-position)
 8. [Detecting overlap](#detecting-overlap)
 9. [Generatin barrils](#generatin-barrils)
-10. [Pool ob ojects](#Pool-ob-ojects)
+10. [Pool of ojects](#10.-Pool-of-ojects)
 
 ## 1. Starting
 
@@ -68,4 +68,4 @@ let game = new Phaser.Game(config);
 ## 7. Fire and position
 ## 8. Detecting overlap
 ## 9. Generatin barrils
-## 10. Pool ob ojects
+## 10. Pool of ojects
