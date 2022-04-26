@@ -1,6 +1,6 @@
 # Mario Style Platformer Game made in Phaser3
 
-1. [Starting](#1.-Starting)
+1. [Starting](#Starting)
 2. [Arcade Basics](#Arcade-Basics)
 3. [Static and dinamic bodies](#Static-and-dinamic-bodies)
 4. [Player wlaking](#Player-wlaking)
@@ -11,19 +11,19 @@
 9. [Generatin barrils](#generatin-barrils)
 10. [Pool of objects](#Pool-of-objects)
 
-## 1. Starting
-
-- create a new scene
+## Starting
+![Main diagram](./doc/main-diagram.jpg)
+- Create a new scene
 ~~~
 let gameScene = new Phaser.Scene('Game');
 ~~~
 
-- some parameters for our scene
+- Some parameters for our scene
 ~~~
 gameScene.init = function() {};
 ~~~
 
-- load asset files for our game
+- Load asset files for our game
 ~~~
 gameScene.preload = function() {
 
@@ -41,12 +41,13 @@ gameScene.preload = function() {
 };
 ~~~
 
-- executed once, after assets were loaded
+- Executed once, after assets were loaded
 ~~~
 gameScene.create = function() {};
 ~~~
 
-- our game's configuration
+- Game's configuration
+~~~
 let config = {
   type: Phaser.AUTO,
   width: 360,
@@ -55,17 +56,17 @@ let config = {
   title: 'Monster Kong',
   pixelArt: false
 };
-
-- create the game, and pass it the configuration
+~~~
+- Create the game, and pass it the configuration
 ~~~
 let game = new Phaser.Game(config);
 ~~~
-## 2. ## Arcade Basics
-3. ## Static and dinamic bodies
-4. ## Player wlaking
+## Arcade Basics
+## Static and dinamic bodies
+## Player wlaking
 ## Player jumping
 ## Level data en json
 ## Fire and position
 ## Detecting overlap
 ## Generatin barrils
-10. ## Pool of objects
+## Pool of objects
