@@ -60,12 +60,12 @@ let config = {
 ~~~
 let game = new Phaser.Game(config);
 ~~~
-## 2. Arcade Basics
-## 3. Static and dinamic bodies
-## 4. Player wlaking
-## 5. Player jumping
-## 6. Level data en json
-## 7. Fire and position
-## 8. Detecting overlap
-## 9. Generatin barrils
-## Pool of objects
+2. ## Arcade Basics
+3. ## Static and dinamic bodies
+4. ## Player wlaking
+## Player jumping
+## Level data en json
+## Fire and position
+## Detecting overlap
+## Generatin barrils
+10. ## Pool of objects
