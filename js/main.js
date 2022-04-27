@@ -34,13 +34,37 @@ gameScene.preload = function() {
 gameScene.create = function() {
   //1) adding existing sprites to the physics system
   //Sprite creation
-  let barrel = this.add.sprite(180, 200, 'barrel');
-  //add sprite to the physics system
-  this.physics.add.existing(barrel);
+  let barrel = this.physics.add.sprite(180, 50, 'barrel');
+  
+  this.platforms = this.add.group();
 
   //2)creating and adding sprites to th physics system
-  let ground = this.physics.add.sprite(180,200,'ground');
-  console.log(ground)
+  let ground = this.add.sprite(180,400,'ground');
+  //add sprite to the physics system
+  this.physics.add.existing(ground, true);
+  //disable gravity
+  // ground.body.allowGravity = false;
+  //make it immovable
+  // ground.body.immovable = true;
+  this.platforms.add(ground);
+
+  // Crating a platform
+  let platform = this.add.tileSprite(180, 300, 4*36,1*30, 'block');
+  this.physics.add.existing(platform, true);
+  this.platforms.add(platform)
+
+  //Player
+  this.player = this.add.sprite(180,100,'player',3);
+  this.physics.add.existing(this.player);
+
+  //Collision detection
+  this.physics.add.collider(barrel, ground)
+  this.physics.add.collider(barrel, platform)
+  // this.physics.add.collider(this.player, ground)
+  // this.physics.add.collider(this.player, platform)
+  this.physics.add.collider(this.player, this.platforms)
+
+
 };
 
 // our game's configuration

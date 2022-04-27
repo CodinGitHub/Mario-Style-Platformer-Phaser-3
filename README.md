@@ -1,5 +1,7 @@
 # Mario Style Platformer Game made in Phaser3
 
+![Final work](./doc/final.png)
+
 1. [Starting](#Starting)
 2. [Arcade Basics](#Arcade-Basics)
 3. [Static and dinamic bodies](#Static-and-dinamic-bodies)
@@ -61,31 +63,65 @@ let config = {
 ~~~
 let game = new Phaser.Game(config);
 ~~~
-### Personal notes:
-  - We can create an sprite and add the physics system in two ways:
-  1) Create and add
-  ~~~
-   //Sprite creation
-  let barrel = this.add.sprite(180, 200, 'barrel');
-  //add sprite to the physics system
-  this.physics.add.existing(barrel);
-  ~~~
-  2) Create and add in the same line
-  ~~~
-  let ground = this.physics.add.sprite(180,200,'ground');
-  ~~~
-  - We can also add physics to our game adding this lines of code to the game configuration 
-  ~~~
-  physics:{
-    default: 'arcade',
-    arcade: {
-      gravity: {y:1000},
-      debug: true
-    }
-  }
-  ~~~
 ## Arcade Basics
+- We can create an sprite and add the physics system in two ways:
+1) Create and add
+~~~
+  //Sprite creation
+let barrel = this.add.sprite(180, 200, 'barrel');
+//add sprite to the physics system
+this.physics.add.existing(barrel);
+~~~
+2) Create and add in the same line
+~~~
+let ground = this.physics.add.sprite(180,200,'ground');
+~~~
+- We can also add physics to our game adding this lines of code to the game configuration 
+~~~
+physics:{
+  default: 'arcade',
+  arcade: {
+    gravity: {y:1000},
+    debug: true
+  }
+}
+~~~
 ## Static and dinamic bodies
+### Adding Physic System
+- Once I have the sprite created, I can add it a physic system
+~~~
+let ground = this.add.sprite(180,400,'ground');
+//add sprite to the physics system
+this.physics.add.existing(ground, true); // true means that the sprite is static
+~~~
+### Creating TileSrpites
+- The order of the parametres are: (posX, posY, numbersOfTiles * withOftile , numbersOfTiles * heigthOftile, sprite)
+~~~
+let platform = this.add.tileSprite(180, 300, 4*36,1*30, 'block');
+~~~
+### Creating Groups
+- In the next example, platforms is the name of the group
+~~~
+this.platforms = this.add.group();
+~~~
+- Then, I can add a sprite to the group with the following line:
+~~~
+this.platforms.add(ground); // ground is the name of the sprite
+~~~
+### Adding Collitions
+- I can add collision between two sprites:
+~~~
+this.physics.add.collider(barrel, ground)
+~~~
+- Or between a sprite and a group:
+~~~
+this.physics.add.collider(barrel, this.platforms)
+~~~
+### Creating a player from a sprite sheet
+~~~
+this.player = this.add.sprite(180,100,'player',3); // 3 is the number of the frame
+this.physics.add.existing(this.player);
+~~~
 ## Player wlaking
 ## Player jumping
 ## Level data en json
