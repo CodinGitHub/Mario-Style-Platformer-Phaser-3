@@ -2,7 +2,11 @@
 let gameScene = new Phaser.Scene('Game');
 
 // some parameters for our scene
-gameScene.init = function() {};
+gameScene.init = function() {
+  //player parametres for our scene
+  this.playerSpeed = 150;
+  this.jumpSpeed = -200;
+};
 
 // load asset files for our game
 gameScene.preload = function() {
@@ -57,6 +61,18 @@ gameScene.create = function() {
   this.player = this.add.sprite(180,100,'player',3);
   this.physics.add.existing(this.player);
 
+  //Create walking animation
+  this.anims.create({
+    key: 'walking',
+    frames: this.anims.generateFrameNames('player',{
+      frames:[0,1,2]
+    }),
+    frameRate:12,
+    yoyo: true,
+    repeat:-1
+  });
+
+
   //Collision detection
   this.physics.add.collider(barrel, ground)
   this.physics.add.collider(barrel, platform)
@@ -64,8 +80,43 @@ gameScene.create = function() {
   // this.physics.add.collider(this.player, platform)
   this.physics.add.collider(this.player, this.platforms)
 
-
+  //enable cursor keys
+  this.cursors = this.input.keyboard.createCursorKeys();
+  console.log(this.player);
 };
+
+//executed on every frame
+gameScene.update = function(){
+  if(this.cursors.left.isDown){
+    this.player.body.setVelocityX(-this.playerSpeed);
+
+    this.player.flipX = false;
+
+    if(!this.player.anims.isPlaying){
+      this.player.anims.play('walking');
+    }
+    
+  }else if(this.cursors.right.isDown){
+    this.player.body.setVelocityX(this.playerSpeed);
+
+    this.player.flipX = true;
+
+    if(!this.player.anims.isPlaying){
+      this.player.anims.play('walking');
+    }
+  }else if(this.cursors.space.isDown){
+    this.player.body.setVelocityY(this.jumpSpeed);
+  }else{
+    // make the player stop
+    this.player.body.setVelocityX(0);
+
+    // stop walking animation
+    this.player.anims.stop('walking');
+
+    //set default frame
+    this.player.setFrame(3);
+  }
+}
 
 // our game's configuration
 let config = {

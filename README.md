@@ -5,7 +5,7 @@
 1. [Starting](#Starting)
 2. [Arcade Basics](#Arcade-Basics)
 3. [Static and dinamic bodies](#Static-and-dinamic-bodies)
-4. [Player wlaking](#Player-wlaking)
+4. [Player walking](#Player-walking)
 5. [Player jumping](#player-jumping)
 6. [Level data en json](#level-data-en-json)
 7. [Fire and position](#fire-and-position)
@@ -122,7 +122,54 @@ this.physics.add.collider(barrel, this.platforms)
 this.player = this.add.sprite(180,100,'player',3); // 3 is the number of the frame
 this.physics.add.existing(this.player);
 ~~~
-## Player wlaking
+## Player walking
+- First, we have to create the animation inside the create function
+~~~
+this.anims.create({
+    key: 'walking',
+    frames: this.anims.generateFrameNames('player',{
+      frames:[0,1,2]
+    }),
+    frameRate:12,
+    yoyo: true,
+    repeat:-1
+  });
+~~~
+- Then, we have to create a new function. The update function.
+~~~
+//executed on every frame
+gameScene.update = function(){
+  if(this.cursors.left.isDown){
+    this.player.body.setVelocityX(-this.playerSpeed);
+
+    this.player.flipX = false;
+
+    if(!this.player.anims.isPlaying){
+      this.player.anims.play('walking');
+    }
+    
+  }else if(this.cursors.right.isDown){
+    this.player.body.setVelocityX(this.playerSpeed);
+
+    this.player.flipX = true;
+
+    if(!this.player.anims.isPlaying){
+      this.player.anims.play('walking');
+    }
+  }else if(this.cursors.space.isDown){
+    this.player.body.setVelocityY(this.jumpSpeed);
+  }else{
+    // make the player stop
+    this.player.body.setVelocityX(0);
+
+    // stop walking animation
+    this.player.anims.stop('walking');
+
+    //set default frame
+    this.player.setFrame(3);
+  }
+}
+~~~
 ## Player jumping
 ## Level data en json
 ## Fire and position
